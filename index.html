@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tender Document Package Builder</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF-LIB CDN (PDF Merge & Footer এর জন্য) -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+  <!-- PDF.js CDN (Page Count এর জন্য) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <h1 id="app-title">Tender Document Package Builder</h1>
+    <button id="lang-btn" class="btn secondary">বাংলায় দেখুন</button>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. JSON Load -->
+    <section class="card">
+      <h2 id="sec1-title">1. Load Tender Requirements (JSON)</h2>
+      <input type="file" id="json-input" accept=".json" class="file-input">
+      <div id="tender-info" class="info-box hidden"></div>
+    </section>
+
+    <!-- 2. Upload PDFs -->
+    <section class="card">
+      <h2 id="sec2-title">2. Upload Documents (PDF)</h2>
+      <p class="subtitle" id="sec2-sub">Max 30 files | Total max 50 MB</p>
+      <input type="file" id="pdf-input" accept="application/pdf" multiple class="file-input">
+      <div id="file-error" class="error-msg"></div>
+      <div id="uploaded-files-container" class="file-list"></div>
+    </section>
+
+    <!-- 3. Matching & Verification -->
+    <section class="card">
+      <h2 id="sec3-title">3. Document Matching & Verification</h2>
+      <div id="requirements-table-container">
+        <p class="placeholder-text" id="no-json-msg">Please upload requirements.json first.</p>
+      </div>
+    </section>
+
+    <!-- 4. Generate & Download -->
+    <section class="card">
+      <h2 id="sec4-title">4. Generate Final Package</h2>
+      <div id="blocking-reasons" class="error-box hidden"></div>
+      <button id="generate-btn" class="btn primary" disabled>Generate PDF Package</button>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
